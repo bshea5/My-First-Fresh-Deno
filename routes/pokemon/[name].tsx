@@ -23,7 +23,7 @@ export const handler: Handlers<Pokemon | null> = {
   async GET(_, ctx) {
     const { name } = ctx.params;
     const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-    console.log(resp);
+
     if (resp.status === 404) {
       return ctx.render(null);
     }
