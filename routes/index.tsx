@@ -16,9 +16,9 @@ export const handler: Handlers<Pokemon | null> = {
       return ctx.render(null);
     }
     const resp_json = await resp.json();
-    const pok = resp_json.results;
+    const pokemons = resp_json.results;
 
-    return ctx.render(pok);
+    return ctx.render(pokemons);
   },
 };
 
@@ -28,7 +28,7 @@ export default function Home({ data }: PageProps<[Pokemon] | null>) {
   }
 
   const pok_content = data
-    .sort((a, b) => a.name.localeCompare(b.name))
+    .sort((pok_a, pok_b) => pok_a.name.localeCompare(pok_b.name))
     .map((pok) => (
       <div>
         <h1>
