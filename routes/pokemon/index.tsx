@@ -32,7 +32,7 @@ export default function Home({ data }: PageProps<[Pokemon] | null>) {
     .map((pok) => (
       <div>
         <h1>
-          <a href={`/${pok.name}`}>{pok.name}</a>
+          <a href={`pokemon/${pok.name}`}>{pok.name}</a>
         </h1>
       </div>
     ));
