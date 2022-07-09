@@ -1,45 +1,21 @@
 /** @jsx h */
 import { h } from "preact";
 import { tw } from "@twind";
-import { Handlers, PageProps } from "$fresh/server.ts";
+import Counter from "../islands/Counter.tsx";
 
-interface Pokemon {
-  name: string;
-  url: string;
-}
-
-export const handler: Handlers<Pokemon | null> = {
-  async GET(_, ctx) {
-    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`);
-
-    if (resp.status === 404) {
-      return ctx.render(null);
-    }
-    const resp_json = await resp.json();
-    const pokemons = resp_json.results;
-
-    return ctx.render(pokemons);
-  },
-};
-
-export default function Home({ data }: PageProps<[Pokemon] | null>) {
-  if (!data) {
-    return <h1>Pokemon not found</h1>;
-  }
-
-  const pok_content = data
-    .sort((pok_a, pok_b) => pok_a.name.localeCompare(pok_b.name))
-    .map((pok) => (
-      <div>
-        <h1>
-          <a href={`http://localhost:8000/pokemon/${pok.name}`}>{pok.name}</a>
-        </h1>
-      </div>
-    ));
-
+export default function Home() {
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
-      <div>{pok_content}</div>
+      <img
+        src="/logo.svg"
+        height="100px"
+        alt="the fresh logo: a sliced lemon dripping with juice"
+      />
+      <p class={tw`my-6`}>
+        Welcome to `fresh`. Try update this message in the ./routes/index.tsx
+        file, and refresh.
+      </p>
+      <Counter start={3} />
     </div>
   );
 }
