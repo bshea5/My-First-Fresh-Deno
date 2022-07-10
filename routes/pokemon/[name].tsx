@@ -84,18 +84,5 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
         </div>
       </figure>
     </div>
-
-    // <div class={tw`p-4 mx-auto max-w-screen-md`}>
-    //   <img
-    //     src={data.sprites.front_default}
-    //     class={tw`w-128 h-128 rounded-full`}
-    //   />
-    //   <h1>{data.name}</h1>
-    //   <p>{data.order}</p>
-    //   <br />
-    //   <a class={tw`bg-red-200 ...`} href="../pokemon">
-    //     Back
-    //   </a>
-    // </div>
   );
 }
