@@ -29,10 +29,15 @@ export default function Home({ data }: PageProps<[Pokemon] | null>) {
 
   const pok_content = data
     .sort((pok_a, pok_b) => pok_a.name.localeCompare(pok_b.name))
-    .map((pok) => (
+    .map((pok, i) => (
       <div>
         <h1>
-          <a href={`pokemon/${pok.name}`}>{pok.name}</a>
+          <a
+            class={i % 2 === 0 ? tw`text-blue-500` : tw`text-red-500`}
+            href={`pokemon/${pok.name}`}
+          >
+            {pok.name}
+          </a>
         </h1>
       </div>
     ));
