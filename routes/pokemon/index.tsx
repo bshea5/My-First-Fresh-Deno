@@ -33,7 +33,7 @@ export default function Home({ data }: PageProps<[Pokemon] | null>) {
       <div>
         <h1>
           <a
-            class={i % 2 === 0 ? tw`text-green-500` : tw`text-red-500`}
+            class={i % 2 === 0 ? tw`text-blue-500` : tw`text-red-500`}
             href={`pokemon/${pok.name}`}
           >
             {pok.name}
